@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../components/liquids.css">
+</head>
+<body>
+    <main>
+        <header>
+            <div>
+                <p>Liquido do recipiente: <span id="span-name-liquid">agua</span></p>
+                <span id="span-color-liquid">densidade: 994kg/m^3</span>
+            </div>
+            <div class="buttons">
+                <a href="../../main.html">Solidos</a>
+                <select id="liquids">
+                    <option value="agua">Agua</option>
+                    <option value="oleo">Oleo</option>
+                    <option value="gasolina">Gasolina</option>
+                    <option value="hexano">Hexano</option>
+                    <option value="azeite">Azeite</option>
+                    <option value="tolueno">Tolueno</option>
+                    <option value="mercurio">Mercurio</option>
+                    <option value="oleo_palma">Oleo de palma</option>
+                </select>
+                <button onclick="LoadPage()">Limpar</button>
+            </div>
+        </header>
+
+        <aside>
+            <div class="aside-wave">
+                <div id="first-liquid"><span id="span-text-first"></span></div>
+                <div class="water" id="water"></div>
+                <div id="second-liquid"><span id="span-text-second"></span></div>
+            </div>
+            <div class="aside-object">
+                <div>
+                    <span id="img-obj-selected"></span>
+                    <p id="text-obj-selected"></p>
+                </div>
+                <div>
+                    <p>Densidade: <span id="d-obj-selected"></span></p>
+                </div>
+                <button id="btn-start-simulation">Começar simulaçao</button>
+            </div>
+        </aside>
+
+        <footer id="footer-liquids">
+            <button id="btn-obj">
+                <span></span>
+                <p>Oleo</p>
+            </button>
+            <button id="btn-obj">
+                <span></span>
+                <p>Azeite</p>
+            </button>
+            <button id="btn-obj">
+                <span></span>
+                <p>Hexano</p>
+            </button>
+            <button id="btn-obj">
+                <span></span>
+                <p>Agua</p>
+            </button>
+            <button id="btn-obj">
+                <span></span>
+                <p>Oleo_palma</p>
+            </button>
+            <button id="btn-obj">
+                <span></span>
+                <p>Mercurio</p>
+            </button>
+            <button id="btn-obj">
+                <span></span>
+                <p>Gasolina</p>
+            </button>
+            <button id="btn-obj">
+                <span></span>
+                <p>Tolueno</p>
+            </button>
+                       
+            
+            <button class="button-add" id="button-show-add-object">
+                <p class="icon-add">+</p>
+                <p class="text-add">Add</p>
+            </button>
+        </footer>
+    </main>
+    <div class="add-object" id="add-object">
+
+        <div>
+            <p>Preencha os campos</p>
+            <div class="container-inputs">
+                <input type="text" placeholder="nome do liquido" id="add-object-name">
+                <input type="number" placeholder="densidade do liquido" id="add-object-d">
+            </div>
+            <button id="button-create-object">Criar objecto</button>
+        </div>
+    </div>
+
+    <script src="../scripts/main/db.js"></script>
+    <script src="../scripts/main/forms.js"></script>
+    <script>
+        
+        var btn = document.querySelectorAll("#btn-obj")
+        var liquidSlected = {}
+        var liquidRecip = {}
+
+        btn.forEach((element, index) => {
+            element.addEventListener("click", () => {
+                SelectObj(element.children.item(1).textContent.toLowerCase())
+            })
+        })
+
+         var LoadPage = () => {
+            window.location.href = "liquids.html"
+        }
+    </script>
+    <script src="../scripts/liquids/forms.js"></script>
+    <script src="../scripts/liquids/events.js"></script>
+    <script src="../scripts/liquids/funcs.js"></script>
+    <script src="../scripts/liquids/propsLiquid.js"></script>
+    <script src="../scripts/liquids/init.js"></script>
+</body>
+</html>

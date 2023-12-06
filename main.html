@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="src/components/main.css">
+</head>
+<body>
+    <main>
+        <header>
+            <div>
+                <p>Liquido do recipiente: <span id="span-name-liquid">agua</span></p>
+                <span id="color-liquid">densidade: 994kg/m^3</span>
+            </div>
+            <div class="buttons">
+                <a href="src/pages/liquids.html">Liquidos</a>
+                <select id="liquids">
+                    <option value="agua">Agua</option>
+                    <option value="oleo">Oleo</option>
+                    <option value="gasolina">Gasolina</option>
+                    <option value="hexano">Hexano</option>
+                    <option value="azeite">Azeite</option>
+                    <option value="tolueno">Tolueno</option>
+                    <option value="mercurio">Mercurio</option>
+                    <option value="oleo_palma">Oleo de palma</option>
+                </select>
+                <button onclick="LoadPage()">Limpar</button>
+            </div>
+        </header>
+        <aside id="aside">
+            <!-- <span id="status-object">200m -</span> -->
+            <div class="aside-wave">
+                <div class="water" id="water-recip"></div>
+            </div>
+            <div class="aside-object">
+                <div>
+                    <img src="src/assets/alarme.jpg" id="img-obj-selected">
+                    <p id="text-obj-selected">Alarme</p>
+                </div>
+                <div>
+                    <p>Massa: <span id="m-obj-selected">120</span></p>
+                    <p>Volume: <span id="v-obj-selected">104</span></p>
+                    <p>Densidade: <span id="d-obj-selected">1.2</span></p>
+                    <input type="number" placeholder="altura 0 à 200" id="h-obj-selected" minlength=1 maxlenght=3 max="200" min="0">
+                </div>
+                <button id="btn-start-simulation">Começar simulaçao</button>
+            </div>
+        </aside>
+        <footer id="footer-solid">
+            <button id="btn-obj">
+                <img src="src/assets/maca.jpg" alt="">
+                <p>Maca</p>
+            </button>
+            <button id="btn-obj">
+                <img src="src/assets/bola.jpg" alt="">
+                <p>Bola</p>
+            </button>
+            <button id="btn-obj">
+                <img src="src/assets/rocha.jpg" alt="">
+                <p>Rocha</p>
+            </button>
+            <button id="btn-obj">
+                <img src="src/assets/colher.jpeg" alt="">
+                <p>Colher</p>
+            </button>
+            <button id="btn-obj">
+                <img src="src/assets/ovo.jpg" alt="">
+                <p>Ovo</p>
+            </button>
+            <button id="btn-obj">
+                <img src="src/assets/abacaxi.jpg" alt="">
+                <p>Abacaxi</p>
+            </button>
+            <button id="btn-obj">
+                <img src="src/assets/caneta.jpg" alt="">
+                <p>Caneta</p>
+            </button>
+            <button class="button-add" id="button-show-add-object">
+                <p class="icon-add">+</p>
+                <p class="text-add">Add</p>
+            </button>
+        </footer>
+    </main>
+    <div class="add-object" id="add-object">
+
+        <div>
+            <p>Preencha os campos</p>
+            <input type="text" placeholder="nome do objecto" id="add-object-name">
+            <div class="container-inputs">
+                <input type="number" placeholder="massa do objecto" id="add-object-m">
+                <input type="number" placeholder="volume do objecto" id="add-object-v">
+            </div>
+            <button id="button-create-object">Criar objecto</button>
+        </div>
+    </div>
+
+    <script src="src/scripts/main/db.js"></script>
+    <script>
+        var _objSelected = db.solids[2]
+        var liquidRecip = db.liquids[0]
+        var imgSelected = "src/assets/colher.jpeg"
+        
+        let btn = document.querySelectorAll("#btn-obj")
+        btn.forEach((element, index) => {
+            element.addEventListener("click", () => {
+                imgSelected = element.children.item(0).src.replace("http://127.0.0.1:5500/", "")
+                SelectObj(element.children.item(1).textContent.toLowerCase())
+            })
+        })
+        
+        var LoadPage = () => {
+            window.location.href = "main.html"
+        }
+    </script>
+    <script src="src/scripts/main/forms.js"></script>
+    <script src="src/scripts/main/funcs.js"></script>
+    <script src="src/scripts/main/eventEmpuxe.js"></script>
+    <script src="src/scripts/main/events.js"></script>
+    <script src="src/scripts/main/init.js"></script>
+</body>
+</html>

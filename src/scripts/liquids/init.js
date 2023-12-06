@@ -1,0 +1,2 @@
+SelectObj("oleo")
+EventSelectLiquidRecip("agua")
